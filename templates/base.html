@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}
+    {% endblock title %}</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{#    <link rel="stylesheet" href="{% static 'styles.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'scripts.js' %}">#}
+</head>
+
+<body>
+  <header class="wrapper">
+    <h1><a href="{% url 'articles:list' %}"><img src="{% static '8.jpg' %}" alt="djangonautic" /></a></h1>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+        <li>
+          <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+        <li><a href="{% url 'articles:create' %}" class="highlight">New Article</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <div class="wrapper">
+    {% block content %}
+    {% endblock %}
+  </div>
+{#  </main>#}
+
+</body>
+
+</html>
