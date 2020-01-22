@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if cinema %}
+    <ol>
+        {% for cinema1 in cinema %}
+        <li> Kino: {{ cinema1.cinema_titel }} Location: {{ cinema1.location }}</li>
+    {% endfor %}
+    </ol>
+    {% endif %}
+{% endblock %}
