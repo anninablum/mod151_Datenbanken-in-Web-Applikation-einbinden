@@ -1,0 +1,11 @@
+{% extends 'cinema.html' %}
+{% block dropdown %}
+    <label>
+        <select>
+            <option value="">------------</option>
+            {% for value in cinema %}
+                <option value="{{ value.location }}">{{ value.cinema_titel }}</option>
+            {% endfor %}
+        </select>
+    </label>
+{% endblock %}

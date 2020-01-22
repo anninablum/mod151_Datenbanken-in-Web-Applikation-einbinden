@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    {% block dropdown %}
+    {% endblock %}
     {% if cinema %}
-    <ol>
-        {% for cinema1 in cinema %}
-        <li> Kino: {{ cinema1.cinema_titel }} Location: {{ cinema1.location }}</li>
-    {% endfor %}
-    </ol>
+        <ol>
+            {% for cinema1 in cinema %}
+                <li>{{ cinema1.cinema_titel }} <br> {{ cinema1.location }}</li>
+            {% endfor %}
+        </ol>
     {% endif %}
+
 {% endblock %}

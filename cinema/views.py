@@ -10,4 +10,6 @@ def cinema_view(request):
 
 def cinema_from_db(request):
     cinema_list = Cinema.objects.all()
-    return render(request, 'cinema.html', {'cinema': cinema_list})
+    return render(request, 'cinema_dropdown.html', {'cinema': cinema_list})
+
+
