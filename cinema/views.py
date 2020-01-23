@@ -22,8 +22,8 @@ def cinema_from_db(request):
     return render(request, 'cinema.html', {})
 
 
-def cinema_from_db(request):
-    cinema_list = Cinema.objects.all()
-    return render(request, 'cinema_dropdown.html', {'cinema': cinema_list})
+# def cinema_from_db(request):
+#     cinema_list = Cinema.objects.all()
+#     return render(request, 'cinema_dropdown.html', {'cinema': cinema_list})
 
 
