@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% block dropdown %}
+    {% endblock %}
+    {% if cinema %}
+        <ol>
+            {% for cinema1 in cinema %}
+                <li>{{ cinema1.cinema_title }} <br> {{ cinema1.location }}</li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+{% endblock %}

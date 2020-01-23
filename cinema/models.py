@@ -27,7 +27,7 @@ class Movie(models.Model):
 
 
 class Cinema(models.Model):
-    cinema_titel = models.CharField(max_length=50)
+    cinema_title = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
 
 
