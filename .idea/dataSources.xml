@@ -7,10 +7,16 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/myblog/settings.py</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:E:\myblog\db.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:E:\PycharmProjects\myblog\db.sqlite3</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="modul151@localhost" uuid="907a754b-7f2b-4104-afd5-31ed93701bae">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/modul151</jdbc-url>
     </data-source>
   </component>
 </project>
