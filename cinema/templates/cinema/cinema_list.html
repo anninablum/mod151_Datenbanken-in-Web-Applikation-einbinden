@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>Cinemas:</h2>
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <div id="toolbar">
+        <form id="changelist-search" method="get">
+            <div><!-- DIV needed for valid HTML -->
+                <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+                <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+                <input type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+        <ol>
+            {% for x in cinema %}
+                <li>{{ x.cinema_title }} <br> {{ x.location }}</li>
+            {% endfor %}
+        </ol>
+    </form>
+{% endblock %}

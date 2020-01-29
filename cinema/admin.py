@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cinema.models import Customer, Movie
+from cinema.models import Customer, Movie, Cinema
 
 
 # Register your models here.
@@ -18,3 +18,11 @@ class MovieAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Movie, MovieAdmin)
+
+
+class CinemaAdmin(admin.ModelAdmin):
+    list_display = ('cinema_title', 'location')
+    search_fields = ('cinema_title', 'location')
+
+
+admin.site.register(Cinema, CinemaAdmin)

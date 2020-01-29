@@ -1,0 +1,25 @@
+{#{% extends 'cinema/cinema.html' %}#}
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Movies</h2>
+
+    <div id="toolbar">
+        <form id="changelist-search" method="get">
+            <div><!-- DIV needed for valid HTML -->
+                <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+                <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+                <input type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+
+    {% if movie %}
+        <ol>
+            {% for movies in movie %}
+                <li>{{ movies.movie_title }} <br> {{ movies.movie_genre }} <br> {{ movies.age_restriction }}</li>
+            {% endfor %}
+        </ol>
+
+    {% endif %}
+{% endblock %}

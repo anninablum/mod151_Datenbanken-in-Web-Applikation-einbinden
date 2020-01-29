@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h2>Your Selection</h2>
+    <form class="site-form" method="post">
+        {% csrf_token %}
+        {{ form.fk_customer }}
+        {{ form.fk_movie }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
