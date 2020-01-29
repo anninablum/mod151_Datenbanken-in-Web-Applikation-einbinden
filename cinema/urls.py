@@ -9,6 +9,6 @@ urlpatterns = [
     path('customer_registration/', views.customer_registration_view, name='customer'),
     path('customer_registration/<int:id>/', views.customer_registration_view, name='customer_update'),
     path('customer_registration/delete/<int:id>', views.customer_registration_view, name='customer_delete'),
-    # path('movies/', views.cinema_movie_view, name='movie'),
+    path('movies/', views.cinema_movie_view, name='movie'),
     # path('tickets/', views.ticket_registration_view, name='tickets'),
 ]

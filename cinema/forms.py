@@ -1,5 +1,5 @@
 from django import forms
-from cinema.models import Cinema, Customer
+from cinema.models import Cinema, Customer, Movie
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -23,10 +23,23 @@ class CustomerRegistrationForm(forms.ModelForm):
     #     super(CustomerRegistrationForm, self).__init__(*args, **kwargs)
     #     self.fields['title'].empty_label = "Select"
 
-# class MovieForm(forms.ModelForm):
-#     class Meta:
-#         model = Movie
-#         fields = ['movie_title', 'movie_genre', ]
+
+class MovieForm(forms.ModelForm):
+    class Meta:
+        model = Movie
+        fields = ['movie_title', 'movie_genre', ]
+
+
+class MovieSearchForm(forms.Form):
+    search_text = forms.CharField(
+        required=False,
+        label='Search',
+        widget=forms.TextInput(attrs={'placeholder': 'search here'})
+    )
+    search_age = forms.IntegerField(
+        required=False,
+        label= 'Search age restriction'
+    )
 
 
 # class TicketRegistrationForm(forms.ModelForm):

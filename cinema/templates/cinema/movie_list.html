@@ -1,25 +1,45 @@
-{#{% extends 'cinema/cinema.html' %}#}
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <h2>Movies</h2>
 
-    <div id="toolbar">
-        <form id="changelist-search" method="get">
-            <div><!-- DIV needed for valid HTML -->
-                <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
-                <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
-                <input type="submit" value="Search">
-            </div>
+
+    <div class="container">
+
+        <h2>Movies</h2>
+
+        <form class="form-inline" action="" method="GET">
+            {{ form.movie_title }}
+            <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+            <input type="text" size="40" name="q" value="" id="searchbar" placeholder="Search..." autofocus="">
+            <button class="btn" type="submit">Search</button>
+
         </form>
+
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Age Restriction</th>
+            </tr>
+            {% for objct in movie %}
+                <tr>
+                    <td>{{ objct.movie_title }}</td>
+                    <td>{{ objct.movie_genre }}</td>
+                    <td>{{ objct.age_restriction }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 
-    {% if movie %}
-        <ol>
-            {% for movies in movie %}
-                <li>{{ movies.movie_title }} <br> {{ movies.movie_genre }} <br> {{ movies.age_restriction }}</li>
-            {% endfor %}
-        </ol>
+    {#    {% if movie %}#}
+    {#        <ol>#}
+    {#            {% for movies in movie %}#}
+    {#                <li> <b>{{ movies.movie_title }}</b> <br> {{ movies.movie_genre }} <br> {{ movies.length }} min#}
+    {#                    <br> {{ movies.age_restriction }} years </li>#}
+    {#            {% endfor %}#}
+    {#        </ol>#}
+    {#    {% endif %}#}
 
-    {% endif %}
 {% endblock %}

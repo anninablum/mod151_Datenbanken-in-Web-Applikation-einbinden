@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from articles import views as articles_views
+from cinema import views as cinema_views
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -26,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('articles/', include('articles.urls')),
     path('cinema/', include('cinema.urls')),
-    path('', articles_views.article_list, name='home'),
+    path('', cinema_views.cinema_movie_view, name='home'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
