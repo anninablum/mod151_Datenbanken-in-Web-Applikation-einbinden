@@ -1,12 +1,12 @@
-from abc import ABC
+from django.contrib.auth.decorators import login_required
 from search_views.filters import BaseFilter
-
 from django.contrib.auth import login
 from django.db.models import query, Q
-from django.shortcuts import render, redirect
+from abc import ABC
 from django.views.generic import ListView
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect
 from search_views.views import SearchListView
-
 from cinema.forms import CinemaForm, CustomerRegistrationForm, MovieSearchForm
 from .models import Cinema, Movie, Customer
 
@@ -15,8 +15,8 @@ from .models import Cinema, Movie, Customer
 
 class MovieFilter(BaseFilter):
     search_fields = {
-        'search_text': ['movie_title','genre'],
-        'serch_age': {'operator':'__exact','fields': ['age_restriction']}
+        'search_text': ['movie_title', 'genre'],
+        'serch_age': {'operator': '__exact', 'fields': ['age_restriction']}
     }
 
 
@@ -33,18 +33,20 @@ class MovieSearchList(SearchListView):
 #     return render(request, 'cinema/cinema_list.html', cinema_list)
 #
 
+@login_required
 def customer_registration_view(request):
     cinema_list = Cinema.objects.all()
     if request.method == 'POST':
         form = CustomerRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'cinema/cinema_list.html', {'cinema': cinema_list})
+        return render(request, 'cinema/cinema_list.html', {'cinema': cinema_list})
     else:
         form = CustomerRegistrationForm()
     return render(request, 'cinema/registraion_customer.html', {'form': form})
 
 
+##
 # def customer_registration_view(request, id=0):
 #     if request.method == "GET":
 #         if id == 0:

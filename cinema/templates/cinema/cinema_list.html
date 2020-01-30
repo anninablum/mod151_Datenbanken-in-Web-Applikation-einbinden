@@ -1,24 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>Cinemas:</h2>
+    <div class="container">
 
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        {{ form.as_table }}
-        <div id="toolbar">
-        <form id="changelist-search" method="get">
-            <div><!-- DIV needed for valid HTML -->
-                <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
-                <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
-                <input type="submit" value="Search">
+        <h2>Cinemas:</h2>
+
+        <form method="GET" class="post-form">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <div id="toolbar">
+                <form id="changelist-search" method="get">
+                    <div><!-- DIV needed for valid HTML -->
+                        <label for="searchbar"><img src="/static/admin/img/search.svg" alt="Search"></label>
+                        <input type="text" size="40" name="q" value="" id="searchbar" autofocus="">
+                        <input type="submit" value="Search">
+                    </div>
+                </form>
             </div>
         </form>
-    </div>
-        <ol>
-            {% for x in cinema %}
-                <li>{{ x.cinema_title }} <br> {{ x.location }}</li>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+            </tr>
+            {% for objct in cinema %}
+                <tr>
+                    <td>{{ objct.cinema_title }}</td>
+                    <td>{{ objct.location }}</td>
+                </tr>
             {% endfor %}
-        </ol>
-    </form>
+        </table>
+
+    </div>
+
 {% endblock %}
