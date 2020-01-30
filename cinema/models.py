@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from psycopg2.sql import NULL
 
 TITLES = (
     ('Dr.', 'Dr'),
@@ -36,9 +37,9 @@ class Cinema(models.Model):
     location = models.CharField(max_length=50)
 
 
-# class MovieList(models.Model):
-#     fk_cinema = models.ManyToManyField(Cinema)
-#     fk_movie = models.ManyToManyField(Movie)
+class Cinema_Movie(models.Model):
+    fk_cinema = models.ForeignKey(Cinema,on_delete=models.CASCADE)
+    fk_movie = models.ForeignKey(Movie,on_delete=models.CASCADE)
 
 
 # class TicketRegistration(models.Model):

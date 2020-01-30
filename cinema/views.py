@@ -1,5 +1,7 @@
+from tracemalloc import BaseFilter
+
 from django.contrib.auth.decorators import login_required
-from search_views.filters import BaseFilter
+# from search_views.filters import BaseFilter
 from django.contrib.auth import login
 from django.db.models import query, Q
 from abc import ABC
@@ -7,13 +9,14 @@ from django.views.generic import ListView
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from search_views.views import SearchListView
+
 from cinema.forms import CinemaForm, CustomerRegistrationForm, MovieSearchForm
 from .models import Cinema, Movie, Customer
 
 
 # Create your views here.
 
-class MovieFilter(BaseFilter):
+class MovieFilter(BaseFilter, ABC):
     search_fields = {
         'search_text': ['movie_title', 'genre'],
         'serch_age': {'operator': '__exact', 'fields': ['age_restriction']}
